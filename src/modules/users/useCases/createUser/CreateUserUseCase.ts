@@ -1,3 +1,6 @@
+import { hash } from 'bcrypt'
+import { users } from '../../model/UserModel'
+
 
 interface ICreateUser {
   username: string;
@@ -7,16 +10,36 @@ interface ICreateUser {
 
 export class CreateUserUseCase {
   async execute({ username, email, password }: ICreateUser) {
-    
-    //verificar se existe no Banco
-   
+   //check if data already exists 
+   const checkIfEmailAlreadyExists = await users.findOne({ email });
+   const checkIfUsernameAlreadyExists = await users.findOne({ username });
 
-    //hashear a senha
+   if (checkIfEmailAlreadyExists) {
+     return 'Email already Exists';
+   }
+   if (checkIfUsernameAlreadyExists) {
+     return 'Username already';
+   }
 
-    //inserir no banco
-    
+   //encrypt password
+   const hashPassword = await hash(password, 8);
 
-    //retornar sem a senha por segurança
+   //insert on database
+   await users.insertMany({
+     username,
+     email,
+     password: hashPassword,
+     created_at: Date.now().toString(),
+   });
+
+   //return without password
+   const view = {
+     ok: true,
+     username,
+     email,
+   };
+
+   return view;
     
   }
 }
