@@ -6,10 +6,11 @@ interface ICreateUser {
   username: string;
   password: string;
   email: string;
+  image_name:string | undefined;
 }
 
 export class CreateUserUseCase {
-  async execute({ username, email, password }: ICreateUser) {
+  async execute({ username, email, password, image_name }: ICreateUser) {
    //check if data already exists 
    const checkIfEmailAlreadyExists = await users.findOne({ email });
    const checkIfUsernameAlreadyExists = await users.findOne({ username });
@@ -29,6 +30,7 @@ export class CreateUserUseCase {
      username,
      email,
      password: hashPassword,
+     image_name,
      created_at: Date.now().toString(),
    });
 
