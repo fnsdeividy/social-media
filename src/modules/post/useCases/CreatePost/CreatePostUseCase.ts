@@ -4,7 +4,7 @@ interface IPostUseCase {
 }
 
 
-export class PostUseCase {
+export class CreatePostUseCase {
   async execute({ test }: IPostUseCase) {
     
     
