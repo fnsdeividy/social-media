@@ -1,8 +1,14 @@
 {
-  "name": "socialMedia",
+  "name": "social-media",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node dist/src/server.js",
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules ./src/server.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "express": "^4.17.2",
     "express-async-errors": "^3.1.1"
