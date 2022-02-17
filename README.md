@@ -3,8 +3,8 @@
 - [x] Step3- Create a user model with name email password image
 - [x] Step4- Create an api get the data (name email password,image) and save it using mongodb
 - [x] Step5- Password should be hashed using bycrypt js
-- [] Step6- Validate the email is not already exist and not invalid
-- [] Step7- Send the response with created user without password
+- [x] Step6- Validate the email is not already exist and not invalid
+- [x] Step7- Send the response with created user without password
 - [] Step8-Create Post model with image title and description
 - [] Step9-Create post functionality
 - [] Step10- Get all post functionality

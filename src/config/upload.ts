@@ -1,5 +1,5 @@
 
-const path = require('path');
+import path from 'path'
 import multer from 'multer'
 
 const tmpFolder = path.resolve(__dirname, '..', '..', 'tmp')
